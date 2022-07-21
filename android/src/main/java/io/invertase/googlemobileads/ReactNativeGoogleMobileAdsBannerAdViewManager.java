@@ -53,6 +53,7 @@ public class ReactNativeGoogleMobileAdsBannerAdViewManager
   private final String EVENT_AD_CLOSED = "onAdClosed";
   private final String EVENT_SIZE_CHANGE = "onSizeChange";
   private final String EVENT_APP_EVENT = "onAppEvent";
+  private final String EVENT_AD_REQUESTED = "onAdRequested";
   private final int COMMAND_ID_RECORD_MANUAL_IMPRESSION = 1;
 
   private AdRequest request;
@@ -254,6 +255,8 @@ public class ReactNativeGoogleMobileAdsBannerAdViewManager
     }
 
     adView.loadAd(request);
+
+    sendEvent(reactViewGroup, EVENT_AD_REQUESTED, null);
   }
 
   private void sendEvent(ReactViewGroup reactViewGroup, String type, WritableMap payload) {

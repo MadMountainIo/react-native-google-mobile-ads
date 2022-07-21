@@ -71,6 +71,11 @@ export interface BannerAdProps {
    * Called when the user is about to return to the app after tapping on an ad.
    */
   onAdClosed?: () => void;
+
+  /**
+   * Called when request for ad has been sent
+   */
+  onAdRequested?: () => void
 }
 
 /**

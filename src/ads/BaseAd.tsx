@@ -41,7 +41,8 @@ type NativeEvent =
       type: 'onAppEvent';
       name: string;
       data?: string;
-    };
+    }
+  | { type: 'onAdRequested' };
 
 const sizeRegex = /([0-9]+)x([0-9]+)/;
 
@@ -101,6 +102,9 @@ export const BaseAd = React.forwardRef<GoogleMobileAdsBannerView, GAMBannerAdPro
               data: nativeEvent.data,
             };
             if ((eventHandler = props[type])) eventHandler(eventPayload);
+            break;
+          case 'onAdRequested':
+            if ((eventHandler = props[type])) eventHandler();
             break;
           default:
             if ((eventHandler = props[type])) eventHandler();

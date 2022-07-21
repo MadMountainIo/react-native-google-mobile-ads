@@ -111,6 +111,7 @@
   _banner.adUnitID = _unitId;
   [self setRequested:YES];
   [_banner loadRequest:[RNGoogleMobileAdsCommon buildAdRequest:_request]];
+  [self sendEvent:@"onAdRequested" payload: NULL];
   [self sendEvent:@"onSizeChange"
           payload:@{
             @"width" : @(_banner.bounds.size.width),
